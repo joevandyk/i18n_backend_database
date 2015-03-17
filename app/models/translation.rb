@@ -39,7 +39,7 @@ protected
   end
 
   def update_cache
-    new_cache_key = Translation.ck(self.locale, self.key, false)
+    new_cache_key = Translation.ck(I18n::Backend::Locale.find(self.locale_id), self.key, false)
     I18n.backend.cache_store.write(new_cache_key, self.value)
   end
 end
